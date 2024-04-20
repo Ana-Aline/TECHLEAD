@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-04-20T15:08:10.049230" rpa="false" schemaversion="5">
+<suite id="s1" name="Auth" source="D:\QaCoders\techlead\Parte-1\auth.robot">
+<test id="s1-t1" name="Login com sucesso" line="14">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-20T15:08:10.509765" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-20T15:08:10.495763" elapsed="0.014002"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-20T15:08:10.513735" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${MAIL}</arg>
+<arg>password=${PASSWORD}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-20T15:08:10.511783" elapsed="0.001952"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-20T15:08:10.514733" level="INFO">Creating Session using : alias=auth_session, url=https://chips.qacoders-academy.com.br/api/login/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>auth_session</arg>
+<arg>${URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-20T15:08:10.514733" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-20T15:08:12.061316" level="INFO">POST Request : url=https://chips.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-04-20T15:08:12.061483" level="INFO">POST Response : url=https://chips.qacoders-academy.com.br/api/login/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Sat, 20 Apr 2024 18:08:24 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-iPM3FlOgLwsoRLRhlsp1e96WaDk"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"65330feee76064f459d5f10d","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$aMz854AFjDMkpQfzkN4jXuCNkAjVHK/FTy.YtZaw3jGpzs/TgmKiK","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 20/10/2023, 20:40:30 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"65330feee76064f459d5f10e"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMGZlZWU3NjA2NGY0NTlkNWYxMGQiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRhTXo4NTRBRmpETWtwUWZ6a040alh1Q05rQWpWSEsvRlR5Lll0WmF3M2pHcHpzL1RnbUtpSyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjQwOjMwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzBmZWVlNzYwNjRmNDU5ZDVmMTBlIn1dLCJfX3YiOjAsImlhdCI6MTcxMzYzNjUwNCwiZXhwIjoxNzEzNzIyOTA0fQ.7TJrJXTWQEhtxoDHBUZXgkd-KuReHooVPe7yXg_BXZc"} 
+ </msg>
+<msg time="2024-04-20T15:08:12.061483" level="INFO">C:\Users\Ana\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'chips.qacoders-academy.com.br'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-04-20T15:08:12.062479" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>auth_session</arg>
+<arg>/</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-20T15:08:10.515732" elapsed="1.547750"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-20T15:08:12.064843" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.064480" elapsed="0.000363"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-20T15:08:12.066510" level="INFO">${response_body} = {'msg': 'OlÃ¡ Qa-Coders-SYSADMIN, autenticaÃ§Ã£o autorizada com sucesso!', 'user': {'_id': '65330feee76064f459d5f10d', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$...</msg>
+<var>${response_body}</var>
+<arg>json.loads('''${response.content}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.065485" elapsed="0.001025"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-20T15:08:12.067477" level="INFO">{'msg': 'OlÃ¡ Qa-Coders-SYSADMIN, autenticaÃ§Ã£o autorizada com sucesso!', 'user': {'_id': '65330feee76064f459d5f10d', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$2b$10$aMz854AFjDMkpQfzkN4jXuCNkAjVHK/FTy.YtZaw3jGpzs/TgmKiK', 'accessProfile': 'SYSADMIN', 'cpf': '11111111111', 'status': True, 'audit': [{'registeredBy': {'userId': '111111111111111111', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 20/10/2023, 20:40:30 BRT', 'registrationNumber': '01', 'companyId': 'Qa.Coders', '_id': '65330feee76064f459d5f10e'}], '__v': 0}, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMGZlZWU3NjA2NGY0NTlkNWYxMGQiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRhTXo4NTRBRmpETWtwUWZ6a040alh1Q05rQWpWSEsvRlR5Lll0WmF3M2pHcHpzL1RnbUtpSyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjQwOjMwIEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzBmZWVlNzYwNjRmNDU5ZDVmMTBlIn1dLCJfX3YiOjAsImlhdCI6MTcxMzYzNjUwNCwiZXhwIjoxNzEzNzIyOTA0fQ.7TJrJXTWQEhtxoDHBUZXgkd-KuReHooVPe7yXg_BXZc'}</msg>
+<arg>${response_body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.066510" elapsed="0.000967"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-20T15:08:12.068480" level="INFO">response.status</msg>
+<arg>response.status</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.067477" elapsed="0.001003"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-04-20T15:08:12.070479" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.069480" elapsed="0.000999"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2024-04-20T15:08:12.072479" level="INFO">Length is 763.</msg>
+<arg>${response_body}[token]</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.071482" elapsed="0.000997"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_body}[user][mail]</arg>
+<arg>${MAIL}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-20T15:08:12.072479" elapsed="0.001001"/>
+</kw>
+<doc>Validar autenticação com sucesso</doc>
+<status status="PASS" start="2024-04-20T15:08:10.492762" elapsed="1.580718"/>
+</test>
+<status status="PASS" start="2024-04-20T15:08:10.051267" elapsed="2.024720"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Auth">Auth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
