@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.3 on win32)" generated="2024-04-20T15:40:24.024018" rpa="false" schemaversion="5">
+<suite id="s1" name="Auth" source="D:\QaCoders\techlead\Parte-2\auth.robot">
+<test id="s1-t1" name="Login senha invalida" line="25">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-20T15:40:24.313975" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-20T15:40:24.313975" elapsed="0.001031"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-20T15:40:24.316003" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Tead'}</msg>
+<var>${body}</var>
+<arg>mail=${MAIL_SYSADMIN}</arg>
+<arg>password=${PASSWORD_INVALID}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-20T15:40:24.315006" elapsed="0.000997"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-20T15:40:24.317009" level="INFO">Creating Session using : alias=auth_session, url=https://chips.qacoders-academy.com.br/api/login/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>auth_session</arg>
+<arg>${URL}${ENDPOINT_LOGIN}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-20T15:40:24.316003" elapsed="0.001006"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-20T15:40:24.318236" level="FAIL">TypeError: Session.request() got an unexpected keyword argument 'header'</msg>
+<var>${response}</var>
+<arg>auth_session</arg>
+<arg>/</arg>
+<arg>json=${body}</arg>
+<arg>header=${headers}</arg>
+<arg>verify=${True}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2024-04-20T15:40:24.317009" elapsed="0.013162">TypeError: Session.request() got an unexpected keyword argument 'header'</status>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>400</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2024-04-20T15:40:24.331791" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response.json()}[alert]</arg>
+<arg>E-mail ou senha informados são inválidos.</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-04-20T15:40:24.332714" elapsed="0.000000"/>
+</kw>
+<doc>Validar mensagem de erro quando senha é inválida.</doc>
+<tag>excecao</tag>
+<status status="FAIL" start="2024-04-20T15:40:24.311964" elapsed="0.020750">TypeError: Session.request() got an unexpected keyword argument 'header'</status>
+</test>
+<status status="FAIL" start="2024-04-20T15:40:24.026978" elapsed="0.307724"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">excecao</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Auth">Auth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
